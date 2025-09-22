@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-  <!-- ===== GitHub-optimized SEO (StaticQuasar931) ===== -->
+  <!-- ===== GitHub-optimized SEO (exact canonical + new OG image) ===== -->
   <meta charset="utf-8" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
 
   <title>GTA Mods – StaticQuasar931 (Unblocked GTA-style Modes)</title>
-  <meta name="description" content="Play GTA Mods — GTA-style modes right in your browser. Free, school-safe, Chromebook friendly, and fullscreen canvas. Works at school, work, or anywhere." />
+  <meta name="description" content="Play GTA Mods — GTA-style modes in your browser. Free, school-safe, Chromebook friendly. Works at school, work, or anywhere." />
   <meta name="robots" content="index, follow, max-image-preview:large" />
-  <meta name="keywords" content="GTA Mods, GTA mod, GTA game, GTA g@me, GTA unblocked, GTA at school, GTA working at school, school safe games, unbl0cked, static, static 931, staticquasar931, staticquasar 931, staticq, staticq931, gta browser, gta online free, gta like game, gta mods unbl0cked, gta g@mes at school" />
+  <meta name="keywords" content="GTA Mods, GTA mod, GTA game, GTA g@me, GTA unblocked, GTA at school, GTA working at school, school safe games, unbl0cked, static, static 931, staticquasar931, staticquasar 931, staticq, staticq931, gta browser, gta like game" />
   <link rel="canonical" href="https://staticquasar931.github.io/GTA-Mods/" />
 
   <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="GTA Mods – GTA-style Modes (Unblocked)" />
-  <meta property="og:description" content="Play GTA-style modes free in your browser. School-safe, Chromebook friendly, and fullscreen canvas." />
+  <meta property="og:description" content="Play GTA-style modes free in your browser. School-safe, Chromebook friendly." />
   <meta property="og:url" content="https://staticquasar931.github.io/GTA-Mods/" />
-  <meta property="og:image" content="https://res.cloudinary.com/dcsrqennd/image/upload/v1747533056/raw_um4pvq.png" />
+  <meta property="og:image" content="https://res.cloudinary.com/dcsrqennd/image/upload/v1758327608/GTA_Mods_StaticQuasar931_vua0h4.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="theme-color" content="#0aa" />
 
@@ -38,34 +38,22 @@
   }
   </script>
 
-  <!-- Hidden SEO block (200+ words, internal links absolute to Google Sites) -->
+  <!-- Hidden SEO block (safe in body; no layout impact) -->
   <div style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden">
-    <h1>Play GTA Mods — GTA-style Modes in Your Browser (Unblocked)</h1>
+    <h1>Play GTA Mods — GTA-style Modes in Browser (Unblocked & School-Safe)</h1>
     <p>
-      Welcome to <strong>GTA Mods</strong>, a GTA-style collection that launches instantly in your browser with no downloads.
-      This page is tuned for GitHub Pages SEO so students and fans can easily find a <em>school-safe</em> way to try free,
-      sandbox-style driving and open-world play. It’s designed to work smoothly on Chromebook, Windows, and macOS with a
-      fullscreen canvas that auto-fits the screen. If you’re browsing at school or work, our layout avoids disruptive popups
-      and uses lightweight assets to keep page performance reliable on limited networks.
-    </p>
-    <p>
-      Looking for more school-friendly games? Visit the main list at
-      <a href="https://sites.google.com/view/staticquasar931/gm3z">StaticQuasar931 Games</a> or send requests through the
-      <a href="https://sites.google.com/view/staticquasar931/google-form">Google Form</a>. We maintain alternative links and
-      backups so if one version stalls, you can try another quickly. Keywords include GTA mods unblocked, GTA like game,
-      working at school, school-safe browser games, and Static 931. Our goal is to help players enjoy fun, casual experiences
-      during breaks while keeping everything simple, fullscreen, and accessible on school devices.
-    </p>
-    <p>
-      All progress that can be saved from the page layer is stored in <strong>localStorage</strong> on your device,
-      so returning to this GitHub page remembers settings like menu visibility and cached game state bridges when the
-      underlying build supports external save calls. Your data never leaves the browser. For support or new mode ideas,
-      follow our Instagram or use the form linked below. Brand keywords for indexing: static, staticquasar, staticquasar931,
-      static 931, staticq, staticq931, gta mods, gta game, gta g@me, unbl0cked gta g@mes, working at school.
+      GTA Mods is a GTA-like collection you can play right in your browser with no downloads. This GitHub Pages build
+      aims to be school-safe and Chromebook friendly, with fast loading and a fullscreen canvas. Progress saving is handled
+      locally with <strong>localStorage</strong> through a simple bridge so your settings and progress can persist between
+      visits when the underlying build calls the exposed save/load functions. Looking for more unblocked titles and
+      alternates? See the main list at
+      <a href="https://sites.google.com/view/staticquasar931/gm3z">StaticQuasar931 Games</a> or request new ones via the
+      <a href="https://sites.google.com/view/staticquasar931/google-form">Google Form</a>. Keywords: gta mods unblocked,
+      gta like game, working at school, static, staticquasar931, static 931, staticq931.
     </p>
   </div>
 
-  <!-- Styles -->
+  <!-- Styles (original stylesheet kept) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/centerclassroom/mc55@main/style.css">
   <style>
     html, body {
@@ -77,63 +65,13 @@
     }
     canvas:focus { outline: none; }
 
-    /* Full-viewport canvas & loading cover */
+    /* Full-viewport Unity canvas & loading cover */
     #unity-container { position:fixed; inset:0; }
     #unity-canvas { width:100vw; height:100vh; display:block; cursor: default; }
     #loading-cover { position:fixed; inset:0; background:#000 center/cover no-repeat; display:none; }
-
-    /* Static Menu (top-left, twinkle + close with 3m return) */
-    #staticMenu{
-      position: fixed; top: 10px; left: 10px; z-index: 99999;
-      background:#111; color:#0ff; padding:10px 16px; border-radius:10px; font-size:14px;
-      box-shadow:0 0 0 rgba(0,255,255,0.0);
-      animation: twinkle 3.2s infinite ease-in-out;
-      transition: opacity .35s ease, transform .35s ease, visibility .35s ease;
-    }
-    #staticMenu a{ color:#0ff; text-decoration:none; font-weight:bold; }
-    #closeStaticMenu{ margin-left:12px; color:#f55; cursor:pointer; }
-    @keyframes twinkle{
-      0%,100%{ box-shadow:0 0 6px rgba(0,255,255,0.35); }
-      50%{ box-shadow:0 0 14px rgba(0,255,255,0.85); }
-    }
-
-    /* Bottom-right rotating quick link (Google Form ↔ Instagram only) */
-    #staticSlideMenu{
-      position: fixed; bottom:24px; right:24px; z-index: 99999;
-      width:100px; height:100px; display:flex; align-items:center; justify-content:center;
-      opacity:0; transform:translateX(120px) scale(.96); pointer-events:none;
-      will-change: transform, opacity;
-      transition: opacity .35s ease, transform .35s ease, visibility .35s ease;
-    }
-    #staticSlideMenu img{ width:100%; height:100%; object-fit:cover; border-radius:50%; user-select:none; }
-    @media (max-width:768px){ #staticSlideMenu{ width:82px; height:82px; bottom:20px; right:20px; } }
-    .slideInRight2s{ animation: slideInRight2s 2s ease forwards; }
-    .slideOutRight2s{ animation: slideOutRight2s 2s ease forwards; }
-    @keyframes slideInRight2s{ from{opacity:0; transform:translateX(120px) scale(.96)} to{opacity:1; transform:translateX(0) scale(1)} }
-    @keyframes slideOutRight2s{ from{opacity:1; transform:translateX(0) scale(1)} to{opacity:0; transform:translateX(120px) scale(.96)} }
-
-    /* Global hide (Y+U+I) for all menus/buttons */
-    .menus-hidden #staticMenu,
-    .menus-hidden #staticSlideMenu{ opacity:0; transform: translateY(10px) scale(.98); visibility:hidden; }
   </style>
 </head>
 <body class="light">
-  <!-- Top-left Static Menu (with close & 3-minute return) -->
-  <div id="staticMenu" aria-label="Static menu with site link">
-    <a href="https://sites.google.com/view/staticquasar931/gm3z" target="_blank" rel="noopener"
-       aria-label="Open more unblocked games by StaticQuasar931 in a new tab">More Unblocked Games by Static</a>
-    <span id="closeStaticMenu" aria-label="Hide Static Menu for 3 minutes" role="button" tabindex="0">✕</span>
-  </div>
-
-  <!-- Bottom-right rotating quick link (Google Form ↔ Instagram) -->
-  <a id="staticSlideMenu" href="https://sites.google.com/view/staticquasar931/google-form" target="_blank" rel="noopener"
-     aria-label="Rotating quick link: Google Form or Instagram">
-    <img
-      src="https://res.cloudinary.com/dcsrqennd/image/upload/v1747533056/raw_um4pvq.png"
-      alt="Open StaticQuasar931 Google Form (feedback & game requests) — opens in a new tab"
-      loading="lazy" decoding="async" referrerpolicy="no-referrer">
-  </a>
-
   <!-- Unity DOM -->
   <div id="unity-container" class="unity-desktop">
     <canvas id="unity-canvas" tabindex="-1"></canvas>
@@ -153,137 +91,14 @@
   </noscript>
 
   <script>
-    // ===== Local memory helpers =====
+    /* =========================
+       Local progress saving (bridge)
+       ========================= */
     const LS_PREFIX = "sq931.gta-mods.";
     const saveLS = (k,v)=>{ try{ localStorage.setItem(LS_PREFIX+k, JSON.stringify(v)); }catch(e){} };
     const loadLS = (k,d=null)=>{ try{ const v=localStorage.getItem(LS_PREFIX+k); return v?JSON.parse(v):d; }catch(e){ return d; } };
 
-    // Leave warning (requested)
-    window.onbeforeunload = function(){
-      return "Are you sure you want to leave? Progress and settings are saved locally when possible.";
-    };
-
-    // Menus global toggle via Y+U+I (persist)
-    (function menusHotkey(){
-      if(loadLS("menusHidden", false)) document.body.classList.add('menus-hidden');
-      const down = new Set();
-      function check(){
-        if (down.has('y') && down.has('u') && down.has('i')){
-          document.body.classList.toggle('menus-hidden');
-          saveLS("menusHidden", document.body.classList.contains('menus-hidden'));
-        }
-      }
-      window.addEventListener('keydown', (e)=>{ down.add(e.key.toLowerCase()); check(); });
-      window.addEventListener('keyup',   (e)=>{ down.delete(e.key.toLowerCase()); });
-      window.addEventListener('blur', ()=> down.clear());
-    })();
-
-    // Static Menu close/return (3 minutes), persisted
-    (function initStaticMenuClose(){
-      const menu = document.getElementById("staticMenu");
-      const btn = document.getElementById("closeStaticMenu");
-      if (!menu || !btn) return;
-      const until = loadLS("staticMenuHiddenUntil", 0);
-      if (Date.now() < until) menu.style.display = "none";
-      btn.onclick = () => {
-        menu.style.display = "none";
-        const t = Date.now() + 180000;
-        saveLS("staticMenuHiddenUntil", t);
-        setTimeout(() => { menu.style.display = "block"; saveLS("staticMenuHiddenUntil", 0); }, Math.max(0, t - Date.now()));
-      };
-    })();
-
-    // Rotating popup: Google Form ↔ Instagram (persist last index)
-    (function rotatePopup(){
-      const FORM = {
-        src: "https://res.cloudinary.com/dcsrqennd/image/upload/v1747533056/raw_um4pvq.png",
-        alt: "Open StaticQuasar931 Google Form (feedback & game requests) — opens in a new tab",
-        link: "https://sites.google.com/view/staticquasar931/google-form",
-        id: "form"
-      };
-      const INSTA = {
-        src: "https://res.cloudinary.com/dcsrqennd/image/upload/v1747533158/raw_cw34yi.png",
-        alt: "Visit StaticQuasar931 on Instagram — opens in a new tab",
-        link: "https://www.instagram.com/freeschoolgamepage/",
-        id: "instagram"
-      };
-      const ROT = [FORM, INSTA];
-      const T_IN = 2000, T_SHOW = 5000, T_OUT = 2000, T_HIDDEN = 20000;
-
-      const anchor = document.getElementById("staticSlideMenu");
-      const img = anchor ? anchor.querySelector("img") : null;
-      if (!anchor || !img) return;
-
-      function preload(src){ return new Promise(res => { const im=new Image(); im.onload=im.onerror=res; im.src=src; }); }
-      function restartAnim(el, cls){ el.classList.remove("slideInRight2s","slideOutRight2s"); void el.offsetWidth; el.classList.add(cls); }
-
-      (async ()=>{
-        await Promise.all(ROT.map(i=>preload(i.src)));
-        let idx = loadLS("rotIdx", 0) % ROT.length;
-        while(true){
-          const st = ROT[idx];
-          img.src = st.src; img.alt = st.alt; anchor.href = st.link;
-          anchor.style.pointerEvents="auto";
-          restartAnim(anchor,"slideInRight2s");
-          await new Promise(r=>setTimeout(r, T_IN + T_SHOW));
-          restartAnim(anchor,"slideOutRight2s");
-          await new Promise(r=>setTimeout(r, T_OUT));
-          anchor.style.pointerEvents="none";
-          await new Promise(r=>setTimeout(r, T_HIDDEN));
-          idx = (idx+1) % ROT.length;
-          saveLS("rotIdx", idx);
-        }
-      })();
-    })();
-  </script>
-
-  <!-- ===== Unity loader / game boot (with robust part fallback) ===== -->
-  <script>
-    const buildUrl = "https://cdn.jsdelivr.net/gh/centerclassroom/mc55@main/Build";
-    const loaderUrl = buildUrl + "/bb0d9ecdb05db3e84da20bd14a4f84dc.loader.js";
-    const baseConfig = {
-      dataUrl: buildUrl + "/cffd2fddc93a5e3bb5ff56ac3bb5a297.data.br",
-      frameworkUrl: buildUrl + "/c39bf58f300a834e953a20c745c5e5f2.framework.js",
-      codeUrl: buildUrl + "/d649f30ffe591eef6765ee27d7fc980f.wasm.br",
-      streamingAssetsUrl: "StreamingAssets",
-      companyName: "DefaultCompany",
-      productName: "GtaArcade",
-      productVersion: "0.1"
-    };
-
-    const container = document.querySelector("#unity-container");
-    const canvas = document.querySelector("#unity-canvas");
-    const loadingCover = document.querySelector("#loading-cover");
-    const progressBarEmpty = document.querySelector("#unity-progress-bar-empty");
-    const progressBarFull = document.querySelector("#unity-progress-bar-full");
-    const spinner = document.querySelector('.spinner');
-
-    // Responsive canvas sizing
-    function resizeCanvas(){
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      canvas.width  = Math.floor(window.innerWidth  * dpr);
-      canvas.height = Math.floor(window.innerHeight * dpr);
-      canvas.style.width = "100vw";
-      canvas.style.height = "100vh";
-    }
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-      container.className = "unity-mobile";
-    }
-
-    loadingCover.style.background = "url('background.png') center / cover";
-    loadingCover.style.display = "";
-
-    document.addEventListener('contextmenu', event => event.preventDefault());
-    function FocusGame(){ try{ window.focus(); canvas.focus(); }catch(e){} }
-    window.addEventListener('pointerdown', FocusGame);
-    window.addEventListener('touchstart', FocusGame);
-
-    let myGameInstance, initGame=false, nowFullAdOpen=false;
-
-    // ===== Local memory save bridge (Unity ↔ page) =====
+    // Expose simple save/load APIs many Unity web templates already call.
     (function setupLocalSaveBridge(){
       const SAVE_KEY = "gameSave.v1";
       window.GameSave = {
@@ -301,129 +116,131 @@
         },
         clear(){ try{ localStorage.removeItem(LS_PREFIX + SAVE_KEY); }catch(e){} }
       };
-      // Compatibility names used by common templates
+      // Back-compat names commonly looked for by builds
       window.SaveCloud = function(data){ return window.GameSave.save(data); };
       window.LoadCloud = function(){ return window.GameSave.load(); };
       window.InitPlayer = function(){ return Promise.resolve("noAuth"); };
       window.GetPayments = function(){ return Promise.resolve("none"); };
-      window.StickyAdActivity = function(){};
-      window.Review = function(){};
-      window.PromptShow = function(){};
-      window.InitLeaderboards = function(){};
-      window.GetLeaderboardScores = function(){};
-      window.SetLeaderboardScores = function(){};
-      window.ConsumePurchase = function(){};
-      window.flasgsData = function(){};
+      window.StickyAdActivity = function(){}; window.Review = function(){};
+      window.PromptShow = function(){}; window.InitLeaderboards = function(){};
+      window.GetLeaderboardScores = function(){}; window.SetLeaderboardScores = function(){};
+      window.ConsumePurchase = function(){}; window.flasgsData = function(){};
     })();
 
-    // Split file merger with graceful fallback to single files if parts are missing
-    async function tryHead(url){
-      try{
-        const r = await fetch(url, { method: 'HEAD' });
-        return r.ok;
-      }catch(e){ return false; }
+    // Warn on close (requested standard)
+    window.onbeforeunload = function(){
+      return "Leave this page? Local progress is saved when possible.";
+    };
+  </script>
+
+  <!-- ===== Unity loader / game boot (actual needed code) ===== -->
+  <script>
+    // Paths exactly as in your working build
+    const buildUrl  = "https://cdn.jsdelivr.net/gh/centerclassroom/mc55@main/Build";
+    const loaderUrl = buildUrl + "/bb0d9ecdb05db3e84da20bd14a4f84dc.loader.js";
+
+    // Base config (single-file URLs). The loader will fetch frameworkUrl & others itself.
+    const baseConfig = {
+      dataUrl:       buildUrl + "/cffd2fddc93a5e3bb5ff56ac3bb5a297.data.br",
+      frameworkUrl:  buildUrl + "/c39bf58f300a834e953a20c745c5e5f2.framework.js",
+      codeUrl:       buildUrl + "/d649f30ffe591eef6765ee27d7fc980f.wasm.br",
+      streamingAssetsUrl: "StreamingAssets",
+      companyName:   "DefaultCompany",
+      productName:   "GtaArcade",
+      productVersion:"0.1"
+    };
+
+    const container        = document.getElementById("unity-container");
+    const canvas           = document.getElementById("unity-canvas");
+    const loadingCover     = document.getElementById("loading-cover");
+    const progressBarEmpty = document.getElementById("unity-progress-bar-empty");
+    const progressBarFull  = document.getElementById("unity-progress-bar-full");
+    const spinner          = document.querySelector(".spinner");
+
+    // Responsive canvas sizing (pixel-perfect)
+    function resizeCanvas(){
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width  = Math.floor(window.innerWidth  * dpr);
+      canvas.height = Math.floor(window.innerHeight * dpr);
+      canvas.style.width = "100vw";
+      canvas.style.height = "100vh";
+    }
+    resizeCanvas(); addEventListener("resize", resizeCanvas);
+
+    // Mobile class like original
+    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+      container.className = "unity-mobile";
+    }
+
+    // Show loading screen
+    loadingCover.style.background = "url('background.png') center/cover";
+    loadingCover.style.display = "";
+
+    // Prevent context menu & keep focus on canvas
+    addEventListener('contextmenu', e => e.preventDefault());
+    function FocusGame(){ try{ window.focus(); canvas.focus(); }catch(e){} }
+    addEventListener('pointerdown', FocusGame);
+    addEventListener('touchstart',  FocusGame);
+
+    // ===== Optional: support split-file (part0..partN) if they exist =====
+    async function headOK(url){
+      try{ const r = await fetch(url, {method:'HEAD'}); return r.ok; }catch(e){ return false; }
     }
     async function mergeFileParts(fileUrl, partCount) {
       const parts = [];
       for (let i = 0; i < partCount; i++) {
         const partUrl = `${fileUrl}.part${i}`;
         const resp = await fetch(partUrl);
-        if (!resp.ok) throw new Error(`Failed part ${i} (${resp.status})`);
+        if (!resp.ok) throw new Error(`Missing ${partUrl}`);
         parts.push(await resp.arrayBuffer());
       }
       const total = parts.reduce((s,p)=>s+p.byteLength,0);
       const merged = new Uint8Array(total);
       let off = 0;
-      for (const part of parts) { merged.set(new Uint8Array(part), off); off += part.byteLength; }
+      for (const p of parts) { merged.set(new Uint8Array(p), off); off += p.byteLength; }
       return URL.createObjectURL(new Blob([merged], { type: 'application/octet-stream' }));
     }
-    async function prepareUnityConfig(cfg) {
-      const dataBase = buildUrl + "/cffd2fddc93a5e3bb5ff56ac3bb5a297.data.br";
-      const wasmBase = buildUrl + "/d649f30ffe591eef6765ee27d7fc980f.wasm.br";
-      const hasDataParts = await tryHead(dataBase + ".part0");
-      const hasWasmParts = await tryHead(wasmBase + ".part0");
-      try{
-        if (hasDataParts) cfg.dataUrl = await mergeFileParts(dataBase, 4);
-        else cfg.dataUrl = dataBase;
-      }catch(e){ cfg.dataUrl = dataBase; }
-      try{
-        if (hasWasmParts) cfg.codeUrl = await mergeFileParts(wasmBase, 4);
-        else cfg.codeUrl = wasmBase;
-      }catch(e){ cfg.codeUrl = wasmBase; }
+    async function prepareConfig(cfg){
+      // Prefer single files; if .part0 exists, merge 4 parts (adjust if your host slices differently)
+      const dataBase = cfg.dataUrl;
+      const wasmBase = cfg.codeUrl;
+      const hasDataParts = await headOK(dataBase + ".part0");
+      const hasWasmParts = await headOK(wasmBase + ".part0");
+      try{ cfg.dataUrl = hasDataParts ? await mergeFileParts(dataBase, 4) : dataBase; }catch(e){ cfg.dataUrl = dataBase; }
+      try{ cfg.codeUrl = hasWasmParts ? await mergeFileParts(wasmBase, 4) : wasmBase; }catch(e){ cfg.codeUrl = wasmBase; }
       return cfg;
     }
 
-    // Load Unity loader dynamically, then boot
+    // ===== Boot real Unity instance (this is the ACTUAL needed code) =====
     (function boot(){
-      const script = document.createElement("script");
-      script.src = loaderUrl;
-      script.onload = async () => {
+      const s = document.createElement("script");
+      s.src = loaderUrl;
+      s.onload = async () => {
         try {
-          const updatedConfig = await prepareUnityConfig({ ...baseConfig });
-          createUnityInstance(canvas, updatedConfig, (progress) => {
+          const cfg = await prepareConfig({ ...baseConfig });
+          createUnityInstance(canvas, cfg, (progress) => {
             spinner.style.display = "none";
             progressBarEmpty.style.display = "";
-            progressBarFull.style.width = `${Math.floor(100 * progress)}%`;
+            progressBarFull.style.width = `${Math.floor(progress*100)}%`;
           }).then((unityInstance) => {
-            myGameInstance = unityInstance;
+            // Ready
             loadingCover.style.display = "none";
-            initGame = true;
-
-            // If your Unity side expects a save payload, you can forward it here:
+            // If your Unity side expects saved data immediately, you could send it here:
             // const saved = window.GameSave.load();
-            // if (saved && saved !== "noData") {
-            //   myGameInstance.SendMessage("BridgeObject", "OnSaveLoaded", saved);
-            // }
-          }).catch((message) => {
-            console.error("Unity load error:", message);
+            // if (saved && saved !== "noData") { unityInstance.SendMessage("BridgeObject","OnSaveLoaded", saved); }
+          }).catch((err) => {
+            console.error("Unity load error:", err);
           });
-        } catch (error) {
-          console.error("Error starting Unity:", error);
+        } catch (e) {
+          console.error("Boot error:", e);
         }
       };
-      script.onerror = ()=> console.error("Failed to load Unity loader script.");
-      document.body.appendChild(script);
+      s.onerror = () => console.error("Failed to load Unity loader:", loaderUrl);
+      document.body.appendChild(s);
     })();
 
-    // Defensive: ignore unhandled promise rejections from ad/template stubs
-    window.addEventListener("unhandledrejection", function(event) {
-      console.warn("Suppressed rejection:", event.reason);
-      event.preventDefault();
-    });
-
-    // Optional ad template shims (no-ops unless your build listens)
-    function FullAdShow() {
-      try {
-        if (!nowFullAdOpen) {
-          nowFullAdOpen = true;
-          if (initGame && myGameInstance) { myGameInstance.SendMessage("YandexGame", "OpenFullAd"); }
-          setTimeout(() => {
-            nowFullAdOpen = false;
-            if (initGame && myGameInstance) { myGameInstance.SendMessage("YandexGame", "CloseFullAd", "true"); }
-            FocusGame();
-          }, 500);
-        }
-      } catch (error) {}
-    }
-    function RewardedShow(rewardId) {
-      try {
-        if (myGameInstance) {
-          myGameInstance.SendMessage("YandexGame", "RewardVideo", rewardId);
-          setTimeout(()=>{ myGameInstance.SendMessage("YandexGame", "CloseRewardVideo"); FocusGame(); }, 0);
-        }
-      } catch (error) {}
-    }
-    function InitGame() {
-      try {
-        console.log('Init Game Success');
-        initGame = true;
-        if (nowFullAdOpen === true && myGameInstance != null) {
-          myGameInstance.SendMessage('YandexGame', 'OpenFullAd');
-        }
-      } catch (error) {
-        console.error("InitGame error:", error);
-      }
-    }
+    // Ignore noisy unhandled rejections from stubbed APIs
+    addEventListener("unhandledrejection", (e)=>{ console.warn("Suppressed rejection:", e.reason); e.preventDefault(); });
   </script>
 </body>
 </html>
