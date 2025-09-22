@@ -76,22 +76,9 @@
     @keyframes slideInRight2s{ from{opacity:0; transform:translateX(120px) scale(.96)} to{opacity:1; transform:translateX(0) scale(1)} }
     @keyframes slideOutRight2s{ from{opacity:1; transform:translateX(0) scale(1)} to{opacity:0; transform:translateX(120px) scale(.96)} }
 
-    /* Fix Cursor Issues button (middle-right, a little low) */
-    #fixCursorBtn{
-      position: fixed; right: 20px; top: 62%; transform: translateY(-50%);
-      z-index: 99999; background: rgba(17,17,17,.92); color:#0ff;
-      border:1px solid rgba(0,255,255,.35); padding:10px 14px; border-radius:10px;
-      font-size:14px; cursor:pointer; box-shadow:0 0 12px rgba(0,255,255,.15);
-      white-space: pre-line; /* allow line break in label */
-      transition: opacity .35s ease, transform .35s ease, visibility .35s ease;
-    }
-    #fixCursorBtn:hover{ filter:brightness(1.15); }
-    #fixCursorBtn:active{ transform: translateY(-50%) scale(.98); }
-
     /* Global hide (Y+U+I) for all menus/buttons */
     .menus-hidden #staticMenu,
-    .menus-hidden #staticSlideMenu,
-    .menus-hidden #fixCursorBtn{
+    .menus-hidden #staticSlideMenu{
       opacity:0; transform: translateY(10px) scale(.98); visibility:hidden;
     }
   </style>
@@ -112,10 +99,7 @@
       loading="lazy" decoding="async" referrerpolicy="no-referrer">
   </a>
 
-  <!-- Cursor/Fullscreen helper -->
-  <button id="fixCursorBtn" type="button" aria-label="Fix cursor issues and open fullscreen in a new tab">
-Fix curser issues
-     (Fullscreen)</button>
+  <!-- (Fullscreen button REMOVED as requested) -->
 
   <!-- Your original Unity DOM -->
   <div id="unity-container" class="unity-desktop">
@@ -130,7 +114,7 @@ Fix curser issues
       </div>
   </div>
 
-  <!-- ===== Everything below is your original loader/startup logic, with LOCAL MEMORY SAVES wired in ===== -->
+  <!-- ===== Everything below is your original loader/startup logic ===== -->
   <script>
     // --- Static Menu close/return (unchanged behavior) ---
     (function initStaticMenuClose(){
@@ -207,7 +191,7 @@ Fix curser issues
     })();
   </script>
 
-  <!-- Your original boot script (kept 1:1 except for the LOCAL MEMORY SAVE bridge + leave warning) -->
+  <!-- Your original boot script (unchanged) -->
   <script>
     const hideFullScreenButton = "";
     const buildUrl = "https://cdn.jsdelivr.net/gh/centerclassroom/mc55@main/Build";
@@ -288,38 +272,10 @@ Fix curser issues
     let initGame = false;
     let nowFullAdOpen = false;
 
-    /* ======= LOCAL MEMORY SAVE BRIDGE (replaces stubs) ======= */
-    const LS_KEY = "sq931.gta-mods.save";
-    function SaveCloud(data){
-      try{
-        const payload = (typeof data === "string") ? data : JSON.stringify(data||{});
-        localStorage.setItem(LS_KEY, payload);
-      }catch(e){}
-    }
-    function LoadCloud(){
-      try{
-        const v = localStorage.getItem(LS_KEY);
-        return Promise.resolve(v ? v : "noData");
-      }catch(e){
-        return Promise.resolve("noData");
-      }
-    }
-    function InitPlayer(){ return Promise.resolve("noAuth"); }
-    // Optional helpers Unity templates sometimes poke:
-    function GetPayments(){ return Promise.resolve("none"); }
-    function StickyAdActivity() {}
-    function Review() {}
-    function PromptShow() {}
-    function InitLeaderboards() {}
-    function GetLeaderboardScores() {}
-    function SetLeaderboardScores() {}
-    function ConsumePurchase() {}
-    function flasgsData() {}
-
-    // Warn before leaving so users don't lose unsaved in-game progress.
-    window.onbeforeunload = function(){
-      return "Leave this page? Progress is saved locally when supported by the build.";
-    };
+    function GetPayments() { console.warn("GetPayments is not implemented"); return Promise.resolve("none"); }
+    function SaveCloud() { console.warn("SaveCloud is not implemented"); }
+    function LoadCloud() { console.warn("LoadCloud is not implemented"); return Promise.resolve("noData"); }
+    function InitPlayer() { console.warn("InitPlayer is not implemented"); return Promise.resolve("noData"); }
 
     function FullAdShow() {
         try {
@@ -349,6 +305,15 @@ Fix curser issues
             closeRewardedAd();
         } catch (error) {}
     }
+
+    function StickyAdActivity() { console.warn("StickyAdActivity is not implemented"); }
+    function Review() { console.warn("Review is not implemented"); }
+    function PromptShow() { console.warn("PromptShow is not implemented"); }
+    function InitLeaderboards() { console.warn("InitLeaderboards is not implemented"); }
+    function GetLeaderboardScores() { console.warn("GetLeaderboardScores is not implemented"); }
+    function SetLeaderboardScores() { console.warn("SetLeaderboardScores is not implemented"); }
+    function ConsumePurchase() { console.warn("ConsumePurchase is not implemented"); }
+    function flasgsData() { console.warn("ConsumePurchases is not implemented"); }
 
     // File merge helpers (kept)
     async function mergeFileParts(fileUrl, partCount) {
@@ -409,13 +374,6 @@ Fix curser issues
                         myGameInstance = unityInstance;
                         loadingCover.style.display = "none";
                         initGame = true; // restore flag so ads callbacks behave
-
-                        // Optional: immediately return any saved blob to Unity if it listens.
-                        // LoadCloud().then(saved => {
-                        //   if (saved && saved !== "noData") {
-                        //     myGameInstance.SendMessage("BridgeObject", "OnSaveLoaded", saved);
-                        //   }
-                        // });
                     }).catch((message) => {
                         console.error("Unity yükleme hatası:", message);
                     });
@@ -447,33 +405,7 @@ Fix curser issues
         event.preventDefault();
     });
 
-    // --- Open in about:blank WITHOUT the button in the clone; request fullscreen ---
-    (function(){
-      const btn = document.getElementById('fixCursorBtn');
-      if(!btn) return;
-      btn.addEventListener('click', function(){
-        try{
-          const w = window.open('', '_blank'); // true about:blank
-          if(!w){ alert('Pop-up blocked. Please allow pop-ups for this site.'); return; }
-          let raw = document.documentElement.outerHTML;
-          // remove the fullscreen button block from the clone
-          raw = raw.replace(/<button id="fixCursorBtn"[\s\S]*?<\/button>/i, '');
-          const fullHTML = '<!DOCTYPE html>' + raw;
-          w.document.open(); w.document.write(fullHTML); w.document.close();
-
-          // Try to fullscreen after clone loads
-          const tryFS = () => {
-            try{
-              const c = w.document.getElementById('unity-canvas');
-              if (c && c.requestFullscreen) c.requestFullscreen().catch(()=>{});
-            }catch(e){}
-          };
-          tryFS(); setTimeout(tryFS, 1200); setTimeout(tryFS, 3000);
-        }catch(e){
-          console.warn('Could not open about:blank:', e);
-        }
-      });
-    })();
+    /* (Fullscreen/new-tab helper REMOVED as requested) */
   </script>
 
   <!-- Keep your original external loader includes (as you had them) -->
