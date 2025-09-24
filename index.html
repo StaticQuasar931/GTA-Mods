@@ -9,7 +9,7 @@
 
   <!-- === Added SEO for GitHub/Page previews === -->
   <link rel="canonical" href="https://staticquasar931.github.io/GTA-Mods/">
-  <meta name="keywords" content="GTA Mods, GTA mod, GTA game, GTA g@me, unblocked GTA, GTA at school, working at school, school-safe games, unbl0cked, staticquasar931, static 931, staticq931" />
+  <meta name="keywords" content="GTA Mods, GTA mod, GTA game, GTA g@me, unblocked GTA, GTA at school, working at school, school-safe games, unbl0cked, staticquasar931, static 931, staticq931, staticq, static quasar 931" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="GTA Mods – GTA-style Modes (Unblocked)" />
   <meta property="og:description" content="Play GTA-style modes free in your browser. School-safe, Chromebook friendly, and fullscreen canvas." />
@@ -17,6 +17,9 @@
   <meta property="og:image" content="https://res.cloudinary.com/dcsrqennd/image/upload/v1758327608/GTA_Mods_StaticQuasar931_vua0h4.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="theme-color" content="#0aa" />
+
+  <!-- Dynamic favicon (default: GTA Mods main) -->
+  <link id="dynamicFavicon" rel="icon" type="image/png" href="https://res.cloudinary.com/dcsrqennd/image/upload/v1758327608/GTA_Mods_StaticQuasar931_vua0h4.png">
 </head>
 <body class="light"><module>
 <moduleprefs title="Google.com">
@@ -78,8 +81,37 @@
 
     /* Global hide (Y+U+I) for all menus/buttons */
     .menus-hidden #staticMenu,
-    .menus-hidden #staticSlideMenu{
+    .menus-hidden #staticSlideMenu,
+    .menus-hidden #topRightMenuWrap{
       opacity:0; transform: translateY(10px) scale(.98); visibility:hidden;
+    }
+
+    /* === Top-right Dropdown Menu === */
+    #topRightMenuWrap{
+      position: fixed; top: 10px; right: 10px; z-index: 100000;
+      transition: opacity .35s ease, transform .35s ease, visibility .35s ease;
+    }
+    #menuButton{
+      appearance: none; border: 0; cursor: pointer;
+      background: #111; color: #0ff; padding: 10px 14px; border-radius: 10px;
+      font-weight: 700; box-shadow: 0 0 10px rgba(0,255,255,.35);
+    }
+    #dropdown{
+      position: absolute; right: 0; top: 44px; min-width: 260px;
+      background: #0b0b0b; color: #eaffff; border-radius: 12px;
+      box-shadow: 0 10px 24px rgba(0,0,0,.4); padding: 8px; display: none;
+    }
+    #dropdown button{
+      width: 100%; text-align: left; background: transparent; color: inherit;
+      border: 0; padding: 10px 12px; border-radius: 8px; cursor: pointer;
+    }
+    #dropdown button:hover{ background: rgba(0,255,255,.08); }
+    #dropdown small{ display:block; opacity:.7; font-size: 11px; line-height: 1.3; }
+    #dropdown .opt-title{ font-weight: 800; margin-bottom: 2px; }
+    #restoreHint{
+      display:none; position: fixed; top: 12px; right: 12px; z-index: 100000;
+      background: #111; color: #fff; padding: 8px 12px; border-radius: 10px; font-size: 12px;
+      box-shadow: 0 0 10px rgba(255,255,255,.2);
     }
   </style>
 
@@ -89,6 +121,26 @@
        aria-label="Open more unblocked games by StaticQuasar931 in a new tab">More Unblocked Games by Static</a>
     <span id="closeStaticMenu" aria-label="Hide Static Menu for 3 minutes" role="button" tabindex="0">✕</span>
   </div>
+
+  <!-- === Top-right Dropdown (Button + Menu) === -->
+  <div id="topRightMenuWrap" aria-label="Options menu (favicon & title)">
+    <button id="menuButton" aria-haspopup="true" aria-expanded="false">☰ Options</button>
+    <div id="dropdown" role="menu" aria-label="Options dropdown">
+      <button id="optMainFavicon" role="menuitem">
+        <div class="opt-title">Use/Keep Main GTA Mods Favicon</div>
+        <small>Sets the classic GTA Mods icon. Keeps current page title.</small>
+      </button>
+      <button id="optAeries" role="menuitem">
+        <div class="opt-title">Switch to “Aeries Dashbored”</div>
+        <small>Changes page title & favicon to Aeries variant.</small>
+      </button>
+      <button id="optHideMenu" role="menuitem">
+        <div class="opt-title">Hide This Menu</div>
+        <small>Hides the button & dropdown. Press <b>O+P</b> to bring it back.</small>
+      </button>
+    </div>
+  </div>
+  <div id="restoreHint" aria-live="polite">Menu hidden — press <b>O+P</b> to show</div>
 
   <!-- Rotating slide menu -->
   <a id="staticSlideMenu" href="https://sites.google.com/view/staticquasar931/google-form" target="_blank" rel="noopener"
@@ -116,6 +168,87 @@
 
   <!-- ===== Everything below is your original loader/startup logic ===== -->
   <script>
+    // --- Leave/reload confirmation (requested default) ---
+    window.onbeforeunload = function (e) {
+      e = e || window.event;
+      const msg = "Are you sure you want to leave? Your session may be interrupted.";
+      if (e) e.returnValue = msg;
+      return msg;
+    };
+
+    // --- Favicon & Title controls (Top-right dropdown) ---
+    (function initTopRightMenu(){
+      const wrap = document.getElementById('topRightMenuWrap');
+      const btn  = document.getElementById('menuButton');
+      const dd   = document.getElementById('dropdown');
+      const optMain  = document.getElementById('optMainFavicon');
+      const optAeries= document.getElementById('optAeries');
+      const optHide  = document.getElementById('optHideMenu');
+      const restore  = document.getElementById('restoreHint');
+
+      const MAIN_ICON = "https://res.cloudinary.com/dcsrqennd/image/upload/v1758327608/GTA_Mods_StaticQuasar931_vua0h4.png";
+      const AERIES_ICON = "https://res.cloudinary.com/dcsrqennd/image/upload/v1758754084/Aeries_StaticQuasar931_i2sznr.png";
+      const ORIGINAL_TITLE = "GTA Mods – StaticQuasar931 (Unblocked GTA-style Modes)";
+
+      function setFavicon(url){
+        let link = document.querySelector('link#dynamicFavicon[rel="icon"]')
+                || document.querySelector('link[rel="icon"]');
+        if (!link){
+          link = document.createElement('link');
+          link.rel = 'icon';
+          link.id = 'dynamicFavicon';
+          document.head.appendChild(link);
+        }
+        link.href = url;
+      }
+
+      function closeDropdown(){ dd.style.display = 'none'; btn.setAttribute('aria-expanded','false'); }
+      function toggleDropdown(){
+        const open = dd.style.display === 'block';
+        dd.style.display = open ? 'none' : 'block';
+        btn.setAttribute('aria-expanded', String(!open));
+      }
+
+      btn.addEventListener('click', (e)=>{ e.stopPropagation(); toggleDropdown(); });
+      document.addEventListener('click', ()=> closeDropdown());
+      document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape') closeDropdown(); });
+
+      // Option 1: Main favicon, keep title
+      optMain.addEventListener('click', ()=>{
+        setFavicon(MAIN_ICON);
+        document.title = ORIGINAL_TITLE; // also ensure original if it had changed
+        closeDropdown();
+      });
+
+      // Option 2: Aeries Dashbored title + favicon
+      optAeries.addEventListener('click', ()=>{
+        document.title = "Aeries Dashbored";
+        setFavicon(AERIES_ICON);
+        closeDropdown();
+      });
+
+      // Option 3: Hide menu (button + dropdown); restore with O+P
+      optHide.addEventListener('click', ()=>{
+        wrap.style.display = 'none';
+        restore.style.display = 'block';
+        closeDropdown();
+        // Auto-hide the hint after a few seconds so it doesn't clutter
+        setTimeout(()=>{ restore.style.display = 'none'; }, 4000);
+      });
+
+      // Restore with simultaneous O + P
+      const down = new Set();
+      function checkRestore(){
+        if (down.has('o') && down.has('p')){
+          wrap.style.display = 'block';
+          restore.style.display = 'none';
+        }
+      }
+      window.addEventListener('keydown', (e)=>{ down.add(e.key.toLowerCase()); checkRestore(); });
+      window.addEventListener('keyup',   (e)=>{ down.delete(e.key.toLowerCase()); });
+      window.addEventListener('blur', ()=> down.clear());
+    })();
+
     // --- Static Menu close/return (unchanged behavior) ---
     (function initStaticMenuClose(){
       const menu = document.getElementById("staticMenu");
