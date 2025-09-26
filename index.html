@@ -18,17 +18,14 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="theme-color" content="#0aa" />
 
-  
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-TR8XGDT3C3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-TR8XGDT3C3');
-</script>
-
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TR8XGDT3C3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-TR8XGDT3C3');
+  </script>
 
   <!-- Dynamic favicon (default: GTA Mods main) -->
   <link id="dynamicFavicon" rel="icon" type="image/png" href="https://res.cloudinary.com/dcsrqennd/image/upload/v1758327608/GTA_Mods_StaticQuasar931_vua0h4.png">
@@ -143,8 +140,8 @@
         <small>Sets the classic GTA Mods icon. Keeps current page title.</small>
       </button>
       <button id="optAeries" role="menuitem">
-        <div class="opt-title">Switch to “Aeries Dashbored”</div>
-        <small>Changes page title & favicon to Aeries variant.</small>
+        <div class="opt-title">Switch to “Aeries Student Dashboard”</div>
+        <small>Changes page title & favicon to the Aeries student variant.</small>
       </button>
       <button id="optHideMenu" role="menuitem">
         <div class="opt-title">Hide This Menu</div>
@@ -199,7 +196,7 @@
       const restore  = document.getElementById('restoreHint');
 
       const MAIN_ICON = "https://res.cloudinary.com/dcsrqennd/image/upload/v1758327608/GTA_Mods_StaticQuasar931_vua0h4.png";
-      const AERIES_ICON = "https://res.cloudinary.com/dcsrqennd/image/upload/v1758754084/Aeries_StaticQuasar931_i2sznr.png";
+      const AERIES_ICON = "https://res.cloudinary.com/dcsrqennd/image/upload/v1758856727/Aeries_Favicon_Unblocked_StaticQuasar931_zkdjbd.webp";
       const ORIGINAL_TITLE = "GTA Mods – StaticQuasar931 (Unblocked GTA-style Modes)";
 
       function setFavicon(url){
@@ -211,6 +208,11 @@
           link.id = 'dynamicFavicon';
           document.head.appendChild(link);
         }
+        // attempt to set type based on extension
+        try {
+          const isWebp = /\.webp(\?|$)/i.test(url);
+          link.type = isWebp ? 'image/webp' : 'image/png';
+        } catch(_) {}
         link.href = url;
       }
 
@@ -228,13 +230,13 @@
       // Option 1: Main favicon, keep title
       optMain.addEventListener('click', ()=>{
         setFavicon(MAIN_ICON);
-        document.title = ORIGINAL_TITLE; // also ensure original if it had changed
+        document.title = ORIGINAL_TITLE; // ensure original if it had changed
         closeDropdown();
       });
 
-      // Option 2: Aeries Dashbored title + favicon
+      // Option 2: Aeries Student Dashboard title + favicon
       optAeries.addEventListener('click', ()=>{
-        document.title = "Aeries Dashbored";
+        document.title = "Aeries Student Dashboard";
         setFavicon(AERIES_ICON);
         closeDropdown();
       });
@@ -468,7 +470,7 @@
                 const partUrl = `${fileUrl}.part${i}`;
                 const response = await fetch(partUrl);
                 if (!response.ok) {
-                    throw new Error(`Failed to fetch part ${partUrl}: ${response.statusText}`);
+                  throw new Error(`Failed to fetch part ${partUrl}: ${response.statusText}`);
                 }
                 const part = await response.arrayBuffer();
                 parts.push(part);
